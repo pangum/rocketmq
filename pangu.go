@@ -5,7 +5,7 @@ import (
 )
 
 func init() {
-	if err := pangu.New().Provides(getProducer, getConsumer); nil != err {
+	if err := pangu.New().Provides(getProducer, getPushConsumer); nil != err {
 		panic(err)
 	}
 }

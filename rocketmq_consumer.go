@@ -7,7 +7,7 @@ import (
 	`github.com/storezhang/pangu`
 )
 
-func getConsumer(config *pangu.Config) (pc mq.PushConsumer, err error) {
+func getPushConsumer(config *pangu.Config) (push mq.PushConsumer, err error) {
 	panguConfig := new(panguConfig)
 	if err = config.Load(panguConfig); nil != err {
 		return
@@ -20,7 +20,7 @@ func getConsumer(config *pangu.Config) (pc mq.PushConsumer, err error) {
 		AccessKey: aliyun.AccessKey,
 		SecretKey: aliyun.SecretKey,
 	}
-	pc, err = mq.NewPushConsumer(
+	push, err = mq.NewPushConsumer(
 		consumer.WithCredentials(credentials),
 		consumer.WithGroupName(rocketmq.Group),
 		consumer.WithNameServer(rocketmq.Endpoints),
